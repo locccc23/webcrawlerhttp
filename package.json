@@ -1,0 +1,25 @@
+{
+  "name": "webcrawlerhttp",
+  "version": "1.0.0",
+  "description": "project for HTTP course",
+  "homepage": "https://github.com/locccc23/webcrawlerhttp#readme",
+  "bugs": {
+    "url": "https://github.com/locccc23/webcrawlerhttp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "test": "jest",
+    "url": "git+https://github.com/locccc23/webcrawlerhttp.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}
