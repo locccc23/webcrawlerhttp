@@ -1,0 +1,157 @@
+{
+  "wagslane.dev": {
+    "visits": 63,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags": {
+    "visits": 62,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/about": {
+    "visits": 62,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags/business": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/dark-patterns": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/things-i-dont-want-to-do-to-grow-business": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags/clean-code": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/zen-of-proverbs": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/func-y-json-api": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/keep-your-data-raw-at-rest": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/continuous-deployments-arent-continuous-disruptions": {
+    "visits": 3,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/optimize-for-simplicit-first": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags/devops": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/no-one-does-devops": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/leave-scrum-to-rugby": {
+    "visits": 5,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/managers-that-cant-code": {
+    "visits": 4,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/kanban-vs-scrum": {
+    "visits": 4,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags/education": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/college-a-solution-in-search-of-a-problem": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags/golang": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/guard-keyword-error-handling-golang": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/gos-major-version-handling": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/go-struct-ordering": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags/management": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags/philosophy": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/what-a-crazy-religion": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/a-case-against-a-case-for-the-book-of-mormon": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/tags/writing": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/seo-is-a-scam-job": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/collapsing-quality-of-devto": {
+    "visits": 2,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  },
+  "wagslane.dev/posts/developers-learn-to-say-no": {
+    "visits": 1,
+    "status": 200,
+    "contentType": "text/html; charset=utf-8"
+  }
+}

@@ -9,11 +9,11 @@ async function crawlPage(baseURL, currentURL, pages) {
         return pages
     }
     const normalizedCurrentURL = normalizeURL(currentURL)
-    if (pages[normalizedCurrentURL] > 0) {
-        pages[normalizedCurrentURL] ++
+    if (pages[normalizedCurrentURL]) {
+        pages[normalizedCurrentURL].visits++
         return pages
     }
-    pages[normalizedCurrentURL] = 1
+   
 
     console.log(`active crawling: ${currentURL}`)
     
@@ -25,10 +25,16 @@ async function crawlPage(baseURL, currentURL, pages) {
     }
 
     const contentType = resp.headers.get("content-type")
-    if (!contentType.includes("text/html")) {
+    if (!contentType || !contentType.includes("text/html")) {
         console.log(`non html response, content type: ${contentType}, on page: ${currentURL}`)
         return pages
     } 
+    pages[normalizedCurrentURL] = {
+        visits: 1,
+        status: resp.status,
+        contentType: contentType,
+
+    }
     const htmlBody =  await resp.text()
      
     const nextURLs = getURLsFromHTML (htmlBody, baseURL)

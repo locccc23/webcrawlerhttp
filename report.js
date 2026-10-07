@@ -5,7 +5,7 @@ function printReport(pages){
     const sortedPages = sortPages (pages)
     for (const sortedPage of sortedPages) {
         const url = sortedPage[0]
-        const hits = sortedPage[1]
+        const hits = sortedPage[1].visits
         console.log(`Found ${hits} internal links to page: ${url}`)
     }
     console.log("=========")
@@ -23,7 +23,12 @@ function sortPages(pages) {
     return pagesArr
 }
 
+function saveReport (pages, filename) {
+    require('fs').writeFileSync(filename, JSON.stringify(pages, null, 2))
+}
+
 module.exports = {
     sortPages,
-    printReport
+    printReport,
+    saveReport
 }
