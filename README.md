@@ -69,15 +69,16 @@ This was my first project using JavaScript, and it helped me practice working wi
 
 The crawler collects information about the pages it visits. The results are saved in report.json file, for example:
 
-```  "wagslane.dev/posts/developers-learn-to-say-no": {
+   ```  
+    "wagslane.dev/posts/developers-learn-to-say-no": {
     "visits": 1,
     "status": 200,
     "contentType": "text/html; charset=utf-8"
-  } ```
+  }
+   ```
 
 ## Future Improvements
 
 - Implement support for reading and respecting robots.txt rules to determine which pages the crawler is allowed to access.
 - Reduce server load and avoiding too many requests in a short time.
 - Improve more handling of HTTP errors, timeouts, and inaccessible pages.
- 
