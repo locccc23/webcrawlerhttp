@@ -1,3 +1,6 @@
+
+
+// Prints a report of the pages and their visit counts. 
 function printReport(pages){
     console.log("=========")
     console.log("Report")
@@ -12,7 +15,7 @@ function printReport(pages){
     console.log("End of Report")
     console.log("=========")
 }
-
+// Sorts the pages by their visit counts in descending order.
 function sortPages(pages) {
     const pagesArr = Object.entries(pages)
     pagesArr.sort((a, b) => {
@@ -23,6 +26,7 @@ function sortPages(pages) {
     return pagesArr
 }
 
+// Saves the report to a JSON file.
 function saveReport (pages, filename) {
     require('fs').writeFileSync(filename, JSON.stringify(pages, null, 2))
 }
