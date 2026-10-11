@@ -1,4 +1,4 @@
-# JavaScript Web Crawler
+# Web Crawler
 
 ## Overview
 
