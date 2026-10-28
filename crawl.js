@@ -56,11 +56,15 @@ async function crawlPage(baseURL, currentURL, pages, maxPages = 10) {
 
         // Get the next URLs from the HTML body.
         const nextURLs = getURLsFromHTML (htmlBody, currentURL)
+        console.log(`Found ${nextURLs.length} links on {currentURL}`)
+        console.log(nextURLs)
         // Recursively crawl the next URLs.
         for (const nextURL of nextURLs) {
             if (Object.keys(pages).length >= maxPages){
+                console.log("Reached page limit")
                 break
             }
+            console.log(`Trying to crawl: ${nextURLs}`)
             pages = await crawlPage (baseURL, nextURL, pages, maxPages)
             
         }
@@ -73,7 +77,7 @@ async function crawlPage(baseURL, currentURL, pages, maxPages = 10) {
         }
 
 // Extracts all URLs from the given HTML body.
-function getURLsFromHTML(htmlBody, baseURL) {
+function getURLsFromHTML(htmlBody, pageURL) {
     const urls = []
     // Create a new JSDOM instance with the HTML body.
     const dom = new JSDOM(htmlBody, {url: pageURL})
