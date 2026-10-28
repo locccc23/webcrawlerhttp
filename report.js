@@ -8,8 +8,9 @@ function printReport(pages){
     const sortedPages = sortPages (pages)
     for (const sortedPage of sortedPages) {
         const url = sortedPage[0]
-        const hits = sortedPage[1].visits
-        console.log(`Found ${hits} internal links to page: ${url}`)
+        const page = sortedPage[1]
+        console.log(`Found ${page.visits} visits to: ${url}`)
+        console.log(`Extracted ${page.text?.length ?? 0} characters`)
     }
     console.log("=========")
     console.log("End of Report")
@@ -19,8 +20,8 @@ function printReport(pages){
 function sortPages(pages) {
     const pagesArr = Object.entries(pages)
     pagesArr.sort((a, b) => {
-        aHits = a[1]
-        bHits = b[1]
+        const aHits = a[1].visits
+        const bHits = b[1].visit
         return bHits - aHits
     })
     return pagesArr

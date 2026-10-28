@@ -1,8 +1,7 @@
 const {JSDOM} = require('jsdom')
 
 // This module contains functions to crawl web pages and extract links from them.   
-async function crawlPage(baseURL, currentURL, pages) {
-    
+async function crawlPage(baseURL, currentURL, pages, maxPages = 10) {
 
     const baseURLObj = new URL(baseURL)
     const currentURLObj = new URL(currentURL)
@@ -18,8 +17,10 @@ async function crawlPage(baseURL, currentURL, pages) {
         pages[normalizedCurrentURL].visits++
         return pages
     }
+    if (Object.keys(pages).length >= maxPages) {
+        return pages
+    }
     // If the page has not been visited, proceed to fetch and process it.
-
     console.log(`active crawling: ${currentURL}`)
     
     try {
@@ -46,11 +47,21 @@ async function crawlPage(baseURL, currentURL, pages) {
         }
         // Extract the HTML body of the response.
         const htmlBody =  await resp.text()
+
+        //Extract readable text from this webpage
+        const extractedText = extractTextFromHTML(htmlBody, currentURL);
+
+        //Save the page infomation and extracted text
+        pages[normalizedCurrentURL].text = extractedText.slice(0,10000);
+
         // Get the next URLs from the HTML body.
-        const nextURLs = getURLsFromHTML (htmlBody, baseURL)
+        const nextURLs = getURLsFromHTML (htmlBody, currentURL)
         // Recursively crawl the next URLs.
         for (const nextURL of nextURLs) {
-            pages = await crawlPage (baseURL, nextURL, pages)
+            if (Object.keys(pages).length >= maxPages){
+                break
+            }
+            pages = await crawlPage (baseURL, nextURL, pages, maxPages)
             
         }
         }  
@@ -65,36 +76,29 @@ async function crawlPage(baseURL, currentURL, pages) {
 function getURLsFromHTML(htmlBody, baseURL) {
     const urls = []
     // Create a new JSDOM instance with the HTML body.
-    const dom = new JSDOM(htmlBody)
+    const dom = new JSDOM(htmlBody, {url: pageURL})
     // Get all anchor elements from the document.
-    const linkElements = dom.window.document.querySelectorAll('a')
+    const linkElements = dom.window.document.querySelectorAll('a[href]')
 
     for (const linkElement of linkElements){
-        // Check if the link is a relative path or an absolute path.
-        if (linkElement.href.slice(0, 1) ===  '/') {
-            //relative path
-            try {
+      
+        try {
             // Create a new URL object with the base URL and the relative path.
-            const urlObj = new URL(`${baseURL}${linkElement.href}`)
-            urls.push(urlObj.href)
-            } catch (err) {
-                console.log(`error with relative url: ${err.message}`)
-            }
-        } else {
-            // absolute path
-            // Create a new URL object with the absolute path.
-            try {
-            const urlObj = new URL(`${linkElement.href}`)
-            urls.push(urlObj.href)
-            } catch (err) {
-                console.log(`error with absolute url: ${err.message}`)
-            }              
-        }
-        
-    }
-    return urls
-}
+            const urlObj = new URL(linkElement.href, pageURL)
 
+            if(
+                urlObj.protocol === 'http:' ||
+                urlObj.protocol === 'https:'
+            ) {
+                urls.push(urlObj.href)
+            }
+
+        } catch (err){
+            console.log(`Invalid URL: ${err.message}`)
+        }
+       }
+       return urls
+      }
 // Normalizes the given URL string by removing the trailing slash if present.
 function normalizeURL(urlString) {
     const urlObj = new URL(urlString)
@@ -104,9 +108,28 @@ function normalizeURL(urlString) {
     }
     return hostPath
 }
+function  extractTextFromHTML (htmlBody, pageURL) {
+    const dom = new JSDOM (htmlBody, {url: pageURL});
+    const document = dom.window.document;
+
+    //Remove elements that usually don't contain main article content.
+    const unwantedElements = document.querySelectorAll(
+        'script, style, nav, footer, header, noscript'
+    );
+    for (const element of unwantedElements) {
+        element.remove();
+    }
+    
+    return document.body?.textContent
+           .replace(/\s+/g, ' ')
+           .trim() || '';
+
+}
+
 
 module.exports = {
     normalizeURL,
     getURLsFromHTML,
-    crawlPage
+    crawlPage,
+    extractTextFromHTML
 }
